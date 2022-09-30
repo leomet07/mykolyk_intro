@@ -8,6 +8,13 @@
 ; Period: 4
 ; Roster: Leonid Metlitsky (232884742)
 
+;Lenny Metlitsky (if team work, replace this line with TNPG & roster)
+;IntroCS pd4 secX
+;HW<nn> -- <your concise summary>
+;2022-09-28
+;time cost: 0.5 (hours)
+;collaborated with: Jia L
+;consulted: <names of those who offered you guidance>
 
 ; Simply return the argument back
 ; SHORTHAND: (define (foo d) d)
