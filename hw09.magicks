@@ -1,0 +1,25 @@
+;Lenny Metlitsky
+;IntroCS pd4 secX
+;HW09 --  Alohomora, 1.1.1 - 1.1.3, reading about the basics of a interpreter
+;2022-10-01
+;time cost: 0.5 (hours)
+
+REPL = Read Eval Print Loop
+Interpreter runs in a Read Eval Print Loop
+
+Advantage of Prefix notation is that it may take any # of args and there will be no ambiguity as the left most element is the operator
+Also allows for simple nesting, with no limits
+
+Things are named with "define", which is a special form.
+A special form is an exeption to the general eval rule
+
+General eval rule of the interpreter (which yes, is recursive in nature):
+1. Eval sub expressions
+2. Apply the operator (left most element) to the arguments that are the values of the subexpression/args
+
+Application of general eval rule leaves us with an issue, evaluating primitive expressions (nums, ops, names)
+Fixed by:
+-Value of numerals are the (base-10) numbers they name
+-built in ops are the machine instruction sequences that they carry out
+-names are the objects/data associated with those names in the (global/local) environment
+
