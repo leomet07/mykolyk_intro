@@ -8,6 +8,7 @@
 ;time cost: 0.5 (hours)
 ;collaborated with: Jia L, Eli L
 
+; XOR, this function takes two booleans, a and b, and returns true if only one is true, otherwise returns false
 (define XOR
   (lambda (a b)
     (and
@@ -23,6 +24,7 @@
 
 (XOR #f #f) "...should be #f"
 
+; Bidirectional IF, this function takes two booleans, a and b, and returns true if only both are true, otherwise returns false
 (define bic
   (lambda (a b)
     (or
@@ -38,6 +40,7 @@
 
 (bic #f #f) "...should be #t"
 
+; XOR with 3 values, this function takes three booleans, a and b and c, and returns true if only one of them is true, otherwise returns false
 (define XOR3
   (lambda (a b c)
     (and
