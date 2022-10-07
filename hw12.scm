@@ -25,7 +25,6 @@
 
 (XOR #f #f) "...should be #f"
 
-"BIC"
 ; Bidirectional IF, this function takes two booleans, a and b, and returns true if only both are true, otherwise returns false
 ; A "shortcut" is to use the negation of the XOR function, as the negation of XOR is logically equivilent to a bidirectional if
 (define bic
