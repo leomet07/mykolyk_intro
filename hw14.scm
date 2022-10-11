@@ -1,6 +1,14 @@
 ;; The first three lines of this file were inserted by DrRacket. They record metadata
 ;; about the language level of this file in a form that our tools can easily process.
 #reader(lib "htdp-beginner-reader.ss" "lang")((modname hw14) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+;Lenny Metlitsky
+;IntroCS pd4 secX
+;Team name: Trees and trains
+;HW14 -- Hack
+;2022-10-11
+;time cost: 0.5 (hours)
+
+; Returns the ones digit of a number
 ; Divide by 10 because floor only removes things after the decimal point
 (define getOnesDigit
   (lambda (a)
@@ -47,7 +55,13 @@
 ; Gets the positive root of a quadratic equation
 (define root1
   (lambda (a b c)
-    (/ (+ (* -1 b) (sqrt (discriminant a b c ))) (* 2 a))))
+    (/
+     (+
+      (* -1 b)
+      (sqrt (discriminant a b c))
+     )
+     (* 2 a)
+    )))
 
 (root1 2 4 2)
 "...should be -1"
@@ -58,6 +72,7 @@
 (root1 1 5 6)
 "...should be -2"
 
+; Returns the digit in the hundreds place
 (define getHundredsDigit
   (lambda (a)
     (floor
@@ -81,6 +96,8 @@
 (getHundredsDigit 3)
 "...should be 0"
 
+; Calculates time left if two trains are headed towards each other on the same track.
+; They are traveling at speeds a and b units per hour, and they are c units apart
 (define disaster
   (lambda (a b c)
     (/ c (+ a b))
