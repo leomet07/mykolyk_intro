@@ -5,10 +5,10 @@
 ;Team name: The Rear End
 ;collaborated with team
 ;HW22 -- Idiomatic Construction -- sumOdd, numDigits, sumOddDigits
-;2022-10-20
-;time cost: 0.5 (hours)
+;2022-10-25
+;time cost: 1.2 (hours)
 
-
+; returns bool value if n is even
 (define isEven
   (lambda (n)
     (=(remainder (floor n) 2) 0)))
@@ -43,7 +43,6 @@
 (sumOdd 11) "...should be 36"
 (sumOdd 12) "...should be 36"
 
-"NUM DIGITS -----------------"
 
 ; the function numDigits takes positive integer n and returns the number of digits in n.
 (define numDigits
@@ -62,17 +61,20 @@
 
 (define sumOddDigits
   (lambda (n)
-    (if (= n 0)
-        n
-        (+ (remainder n 10) (sumOdd (/ n 10))))))
-"...starting sumOddDigits"
+    (if(< n 10)
+       (if(= (remainder n 2) 1)
+          n
+          0)
+       (if(= (remainder (remainder n 10) 2) 1)
+          (+ (remainder n 10) (sumOddDigits (quotient n 10)))
+          (sumOddDigits(quotient n 10))))))
 
-;(sumOddDigits 0) "...should be 0"
+(sumOddDigits 0) "...should be 0"
 (sumOddDigits 4) "...should be 0"
-;(sumOddDigits 3) "...should be 3"
-(sumOddDigits 27) "...should be 9"
+(sumOddDigits 3) "...should be 3"
+(sumOddDigits 27) "...should be 7"
 (sumOddDigits 1984) "...should be 10"
-;(sumOddDigits 492067) "...should be 16"
-;(sumOddDigits 69) "...should be 9"
-;(sumOddDigits 420) "...should be 0"
-;(sumOddDigits 62122159) "...should be 16"
+(sumOddDigits 492067) "...should be 16"
+(sumOddDigits 69) "...should be 9"
+(sumOddDigits 420) "...should be 0"
+(sumOddDigits 62122159) "...should be 16"
