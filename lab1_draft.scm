@@ -5,8 +5,29 @@
   (lambda (n g)
      (/(+ g (/ n g)) 2)))
 
-(sqrt 7) "...real ^^^"
+;(sqrt 7) "...real ^^^"
 
-(foo 9 2)
-(foo 9 3)
-(foo 9 4)
+;(foo 9 2)
+;(foo 9 3)
+;(foo 9 4)
+
+(define epsilon 0.1)
+
+(define isGoodEnuf?
+  (lambda (a b)
+    (< (abs (- a b)) epsilon)))
+
+(define mySqrtHelper
+  (lambda (n g)
+    (if (isGoodEnuf? n (* g g))
+        g
+        (mySqrtHelper n (foo n g) ))))
+
+(define mySqrt
+  (lambda (n)
+    (mySqrtHelper n (/ n 3))))
+
+"lenny sqrt"
+(mySqrt 169)
+
+
