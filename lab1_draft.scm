@@ -5,6 +5,19 @@
   (lambda (n g)
      (/(+ g (/ n g)) 2)))
 
+(foo 4 2) "...should be 2"
+(foo 4 1) "...should be 2.5"
+(foo 4 5) "...should be 2.9"
+(foo 9 3) "...should be 3"
+(foo 9 1) "...should be 5"
+(foo 9 10) "...should be 5.45"
+(foo 16 4) "...should be 4"
+(foo 16 1) "...should be 8.5"
+(foo 16 15) "...should be 8.03"
+(foo 16 900) "...should be 450.008"
+(foo 10 2) "...should be 3.5"
+(foo 12 2) "...should be 4"
+
 (define epsilon 0.1)
 
 (define isGoodEnuf?
