@@ -1,0 +1,56 @@
+;Leonid Metlitsky
+;IntroCS pd4 sec4
+;Team name: The Rear End
+;collaborated with team
+;HW23 -- Bit by Binary Digit
+;2022-11-1
+;time cost: 0.4 (hours)
+
+a)
+Base10	Base 20
+0 0
+1 1
+2 10
+3 11
+4 100
+5 101
+6 110
+7 111
+8 1000
+9 1001
+10 1010
+11 1011
+12 1100
+
+b)
+0001. How many unique values can be represented by a 1-bit register? 2 Ex: 1 or 0
+
+0010. How many unique values can be represented by a 2-bit register? 4 Ex: 00 or 01 or 10 or 11
+
+0011. How many unique values can be represented by a 3-bit register? 8
+
+0100. How many unique values can be represented by a 4-bit register? 16
+
+0101. How many unique values can be represented by an n-bit register? 2^n
+
+0110. How many bits are used to store each octet of an IP (v4) address? octet=8 things, so 8 bits
+
+0111. How many unique IP (v4) addresses are there?  
+There are 4 octets in an ip (octet_one.octet_two.octet_three.octet_four).
+Each octet is 2^8, so the total combination is (2^8)^4 or [2^8 * 2^8 * 2^8 * 2^8]
+(2^8)^4 is 2^32, so 2^32 combinations or approx 4.3 billion combinations.
+
+
+-------------------------------------
+DISCO:
+The number of combinations, or unique values, that any register of n length holds is 2^n.
+
+The maximum (base10) number that can be stored by a register of n length is (2^n)-1 .
+Ex: 3-bit register has 8 possible values, but the highest value it can hold is 7.
+
+
+
+-------------------------------------
+QCC:
+How would computer logic work if it was not base2 (binary)?
+Are there computers that don't use base2?
