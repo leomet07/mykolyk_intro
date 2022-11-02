@@ -53,7 +53,8 @@ for convenience, let's define the base2 number as y, and we start at the right m
 
 1.	If the current right most value is a 1, add the product of 2^current_place_value to the previous sum (or 0 if this is the first iteration).
 	If the current right most value is a 0, add nothing and go to next step
-2	move a place value to the left (increment current_place_value)
+2.	move a place value to the left (increment current_place_value)
+3. 	Repeat
 
 1111
 
