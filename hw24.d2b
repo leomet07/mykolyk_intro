@@ -1,0 +1,48 @@
+;Leonid Metlitsky
+;IntroCS pd4 sec4
+;Team name: The Rear End
+;collaborated with team
+;HW24 -- Base Conversion
+;2022-11-2
+;time cost: 0.5 (hours)
+
+Convert base10 to base2:
+
+for convenience, let's define the base10 number as z
+
+1. Check if z is even:
+	if even, put 0 on the very left
+	if odd, put 1 on the very left
+2. Get the quotient of z / 2
+	If q < 1:
+		STOP ALGORITHM
+	if q is odd:
+		Put 1 on the very left
+	is q is even:
+		Put 0 on the very left
+
+Repeat steps with q as new z
+
+EX:
+77 (base10) to base2
+
+77 is odd so put a 1 on the left 
+77/2's quotient is 38
+38 is even so put a 0 on the left (01)
+38/2's quotient is 19
+19 is odd so put a 1 on the left (101)
+19/2's quotient is 9
+9 is odd so put a 1 on the left (1101)
+9/2's quotient is 4
+4 is even so put a 0 on the left (01101)
+4/2's quotient is 2
+2 is even so put a 0 on the left (001101)
+2/2's quotient is 1
+1 is odd so put a 1 on the left (1001101)
+1/2's quotient is 0
+STOP ALGORITHM
+
+Returned (the final) value: 
+1001101
+
+--------------------------------------------------------------------------------------------------------
