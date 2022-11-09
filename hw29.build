@@ -1,0 +1,51 @@
+;Leonid Metlitsky
+;IntroCS pd4 sec4
+;Team name: The Rear End
+;HW29 -- PC build
+;2022-11-9
+;time cost: 0.4 (hours)
+
+-------------------------------------
+PRIMARY USE:
+This machine will be used for data storage (perhaps as a NAS [networked-attatched storage server]) and as a workstation for research for this program.
+It isn't a computing powerhouse, but it can do any office tasks or even light programming and video editing.  
+-------------------------------------
+DISCO:
+Interestingly, the motherboard has built in wifi. 
+No additional wifi add-in card had to be purchased.
+The 500$ grant is more than enough to build a very respectable workstation.
+-------------------------------------
+QCC:
+The CPU and GPU are built into one processor. 
+The GPU isn't a powerhouse or space heater, but it will be more than enough for office work.
+Is the built in wifi on the motherboard good/reliable/solid quality? Does it have respectable range? 
+-------------------------------------
+
+PARTS LIST:
+
+CPU 		
+	AMD Ryzen 5 4600G 3.7 GHz 6-Core Processor 	$113.55 
+	This is a powerful 6 core (12 thread) processor with integrated graphics that can defeat any office or work task. For 110$, it is a bargain for this grant's budget.
+GPU
+	Integrated graphics in the CPU (which would technically be an APU then)
+	Free!
+Motherboard 		
+	MSI PRO B550M-VC WIFI Micro ATX AM4 Motherboard 	$108.99 	
+	A reliable motherboard with 6 USB ports and built in wifi. Just enough for this program's work and nothing more.
+Memory 		
+	TEAMGROUP T-Force Dark Za 16 GB (2 x 8 GB) DDR4-3600 CL18 Memory 	$44.99 	
+	16 gigabytes of fast ram, so the CPU and GPU can live up to their excellent performance.
+Storage 		
+	Seagate Barracuda Compute 2 TB 3.5" 7200 RPM Internal Hard Drive 	$49.99 	 		
+	Crucial P2 500 GB M.2-2280 PCIe 3.0 X4 NVME Solid State Drive 	$39.99 	
+	A 500GB ssd to boot the operating system off and install tons of apps and store important files on. This SSDs performance is fast and for a great price.
+	The 2 terabyte (2000gb) hard disk drive is for storing the massive files of research and other data hoarding needed for this program.
+Case 		
+	Fractal Design Focus 2 ATX Mid Tower Case 	$57.98 	
+	A simple and cheap PC case to build in.
+Power Supply 		
+	EVGA 500 BQ 500 W 80+ Bronze Certified Semi-modular ATX Power Supply  	$62.99
+	A reliable power supply from a reliable manufacturer that has more than enough wattage (power capacity) for this PC build. 
+	
+TOTAL COST: $478.48
+
