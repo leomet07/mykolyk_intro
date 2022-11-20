@@ -1,0 +1,24 @@
+;Leonid Metlitsky
+;IntroCS pd4 sec4
+;Team name: The Rear End
+;HW31 -- On Productivity and Well-Being
+;2022-11-20
+;time cost: 0.4 (hours)
+
+Notes:
+
+- Best programmers, even the ones who we consider "geniuses", criticize their own programs and SEEK OUT criticism themselves
+
+- It is against human nature to seek our criticism, it causes us to become defensive (as it comes off as a "direct attack")
+
+- Egoless programming is actively going against our human nature anyway
+
+- Pros of egoless programming
+1. Improves code quality and readability
+
+2. May make code more efficient by fixing the obvious inefficiencies. It won't make the code DRASTICALLY more efficient as a program's
+ efficiency is largely determined by the decisions and ideas done up-front. But, egoless programming won't make the code any less efficient. 
+
+3. Improves the programming abilities of the person doing it. (Constructive-Criticism)
+
+TLDR: Be open to receiving criticism about yourself, your own abilities, and your own programs. In fact, even seek it out.
