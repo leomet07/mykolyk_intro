@@ -1,0 +1,31 @@
+;Leonid Metlitsky
+;IntroCS pd4 sec4
+;Team name: The Rear End
+;HW33 -- Netlogo Intro?
+;2022-11-22
+;time cost: 0.4 (hours)
+
+Noteable notes:
+
+Turtles - Literal turtles/sprites that can move around and draw, and they have customizable properties. 
+
+My discovery????
+
+set size <SIZE> works
+so,
+set size 6
+
+but accidentally, i typed set size red
+and it worked???
+and set size blue 
+also works??
+
+blue is replaced with 105
+red with 15
+
+commands:
+set PROPERTY val
+
+or you could use the inspect field and set it from there (or grab the property name if you forgot it)
+
+
