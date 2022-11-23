@@ -1,0 +1,76 @@
+;Leonid Metlitsky
+;IntroCS pd4 sec4
+;Team name: The Rear End
+;HW34 -- Netlogo Intro P2
+;2022-11-22
+;time cost: 0.7 (hours)
+
+to setup
+  ; Clear
+  ca
+  cro 1
+end
+
+
+to stick-figure
+  ; Set pen settings
+  set size 2
+  set color orange
+
+  ; Draw body
+  setxy 0 0
+  pen-down
+  set heading 0
+  fd 8
+
+  ; Draw legs
+  pu
+  setxy 0 0
+  pd
+  set heading 225
+  fd 8
+  setxy 0 0
+  set heading 135
+  fd 8
+
+  ; Draw arms
+  pu
+  setxy 0 3
+  pd
+  set heading 315
+  fd 4
+  setxy 0 3
+  set heading 45
+  fd 4
+
+
+
+
+
+ ; Draw a circle (the figure's head)
+  pu
+  setxy -1.6 13
+  pd
+  repeat 40 [
+  right 10
+    fd 0.5
+  ]
+  pu
+end
+
+to draw-square
+  set size 2
+  set color blue
+  pu
+  setxy 5 -4
+  pen-down
+  set heading 0 ; Go up
+  fd 10
+  set heading 90 ; Go right
+  fd 10
+  set heading 180 ; Go down
+  fd 10
+  set heading 270 ; Go left
+  fd 10
+  pu
+end
