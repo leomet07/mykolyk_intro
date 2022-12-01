@@ -3,7 +3,7 @@
 ;Team name: The Rear End
 ;HW37
 ;2022-11-30
-;time cost: 1.1 (hours) (this has taken me wayyyy too long)
+;time cost: 1.3 (hours) (this has taken me wayyyy too long)
 
 
 ;should clear the world and create 1 turtle.
@@ -14,6 +14,7 @@ to setup1
     set xcor random 33
     set ycor random 33
     set pen-size pen_width
+    set size turtle_size
   ]
 end
 
@@ -25,6 +26,7 @@ to setup100
     set xcor random 33
     set ycor random 33
     set pen-size pen_width
+    set size turtle_size
   ]
 end
 
@@ -49,20 +51,22 @@ end
 
 
 to setColorByQuad
-  if xcor > 0 and ycor > 0 [
-    set color red ;color is red if the turlte is in the first quadrant
+  ifelse xcor >= 0 [
+    ifelse ycor >= 0 [
+      set color red
+    ] [
+      set color green
+    ]
   ]
-  if xcor < 0 and ycor > 0 [
-    set color blue ;color is blue if the turlte is in the second quadrant
+  [
+    ifelse ycor >= 0 [
+      set color yellow
+    ] [
+      set color blue
+    ]
   ]
-  if xcor < 0 and ycor < 0 [
-    set color yellow ;color is yellow if the turlte is in the third quadrant
-  ]
-  if xcor > 0 and ycor < 0 [
-    set color green ;color is green if the turlte is in the fourth quadrant
-  ]
-
 end
+
 
 ;  instructs a turtle to teleport around the world, stamping images of itself upon each landing. Again, color depends on quadrant.
 to quad2
@@ -170,9 +174,9 @@ SLIDER
 152
 turtle_size
 turtle_size
-0
+1
 10
-2.0
+1.0
 1
 1
 NIL
@@ -187,7 +191,7 @@ swagger
 swagger
 0
 100
-100.0
+28.0
 1
 1
 NIL
@@ -642,7 +646,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.3.0
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
