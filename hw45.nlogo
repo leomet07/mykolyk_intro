@@ -1,15 +1,22 @@
 ;Leonid Metlitsky
 ;IntroCS pd4 sec4
-;HW44
+;HW45 -- Line 'Em Up
 ;2022-12-12
 ;time cost: 0.5 (hours)
 ;Team FACE
 
+; places 10 turtles along the y-axis,
+; facing the same direction, with each equidistant from its neighbors.
 to lineup
   ca
   cro num_of_turtles [
     set size 2
-    set xcor who * (world-width / num_of_turtles)
+    set heading 180 ; make turtles face down
+
+    ; Set ycor to be a multiple of the world width divided by the number of turtles
+    ; (this makes the turtles equidistant from each other, with each of the turtles fitting within the y axis and its domain)
+    ; Then, offset the turtles back so that the FIRST turtles starts at the southern most possible y value
+    set ycor (who * (world-width  / num_of_turtles)) - ((world-width - 1) / 2)
   ]
 end
 @#$#@#$#@
@@ -52,7 +59,7 @@ NIL
 T
 OBSERVER
 NIL
-NIL
+C
 NIL
 NIL
 1
@@ -73,41 +80,33 @@ NIL
 HORIZONTAL
 
 @#$#@#$#@
-## WHAT IS IT?
+;Leonid Metlitsky
+;IntroCS pd4 sec4
+;HW45 -- Line 'Em Up
+;2022-12-12
+;time cost: 0.5 (hours)
+;Team FACE
 
-(a general understanding of what the model is trying to show or explain)
 
-## HOW IT WORKS
+## DISCO
+This code doesn't require a loop, since this code is called for every turtles after the turtle is created, with the "who" value acting like an index. The "who" value also starts at 0.
 
-(what rules the agents use to create the overall behavior of the model)
+## QCC
+Are fractional y-cors allowed for the spacing?
+Since there are 33 possible y cors (-16 to 16, inclusive of 0), 33/10 is a fraction.
 
-## HOW TO USE IT
+## How it works
 
-(how to use the model, including a description of each of the items in the Interface tab)
+The function "lineup" sets ycor to be a multiple of the world width divided by the number of turtles and this makes the turtles equidistant from each other. Each of the turtles will fit within the y axis and its domain. (In this case, [-16, 16])
+Then, offset the turtles back so that the FIRST turtles starts at the southern most possible y value.
 
-## THINGS TO NOTICE
+Slider num_of_turtles controls the number of turtles, which for this example, is 10.
 
-(suggested things for the user to notice while running the model)
+Press C to call lineup.
 
-## THINGS TO TRY
+## Credits and References
 
-(suggested things for the user to try to do (move sliders, switches, etc.) with the model)
-
-## EXTENDING THE MODEL
-
-(suggested things to add or change in the Code tab to make the model more complicated, detailed, accurate, etc.)
-
-## NETLOGO FEATURES
-
-(interesting or unusual features of NetLogo that the model uses, particularly in the Code tab; or where workarounds were needed for missing features)
-
-## RELATED MODELS
-
-(models in the NetLogo Models Library and elsewhere which are of related interest)
-
-## CREDITS AND REFERENCES
-
-(a reference to the model's URL on the web if it has one, as well as any other necessary credits, citations, and links)
+[https://ccl.northwestern.edu/netlogo/docs/dictionary.html#world-dim](https://ccl.northwestern.edu/netlogo/docs/dictionary.html#world-dim)
 @#$#@#$#@
 default
 true
