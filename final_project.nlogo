@@ -1,3 +1,5 @@
+turtles-own [country]
+
 to setup
   ca
   reset-ticks
@@ -28,6 +30,7 @@ to setup
     ; set xcor (random (world-width / 3)) + (world-width * 1 / 6)
     set xcor (random ((world-width - 40) / 3)) + (world-width * 1 / 6) + 7
     set ycor random world-height
+    set country "kenya"
   ]
 
   ; Japan
@@ -37,6 +40,7 @@ to setup
     ; * 5 / 6 because we want to offset left by 1/6th of the screen
     set xcor (random ((world-width - 40) / 3)) + (world-width * 3 / 6) + 7
     set ycor random world-height
+    set country "japan"
   ]
 
   ; USA
@@ -44,8 +48,9 @@ to setup
     set size 10
     set shape "person"
     ; * 5 / 6 because we want to offset left by 1/6th of the screen
-     set xcor (random ((world-width - 40) / 3)) + (world-width * 5 / 6) + 7
+    set xcor (random ((world-width - 40) / 3)) + (world-width * 5 / 6) + 7
     set ycor random world-height
+    set country "usa"
   ]
 
 
