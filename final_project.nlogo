@@ -65,6 +65,11 @@ to transition
   emit-ghg
   tick
 end
+
+
+to-report countPopulation [input_country]
+  report count turtles with [country = input_country]
+end
 @#$#@#$#@
 GRAPHICS-WINDOW
 210
@@ -156,6 +161,39 @@ Kenya
 12
 0.0
 1
+
+MONITOR
+657
+38
+777
+84
+Japan population
+countPopulation \"japan\"
+17
+1
+11
+
+MONITOR
+656
+90
+766
+136
+USA population
+countPopulation \"usa\"
+17
+1
+11
+
+MONITOR
+657
+139
+781
+185
+Kenya population
+countPopulation \"kenya\"
+17
+1
+11
 
 @#$#@#$#@
 ## WHAT IS IT?
