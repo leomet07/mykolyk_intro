@@ -4,7 +4,9 @@ to setup
   resize-world -100 100 -100 100
   set-patch-size 2
   ask patches [
-    ; Country 3, Nigeria
+    ; Init country colors
+
+    ; Country 3, Kenya
     if pxcor + max-pxcor < world-width [
       set pcolor green
     ]
@@ -16,6 +18,34 @@ to setup
     if pxcor + max-pxcor < (world-width / 3 )  [
       set pcolor red
     ]
+  ]
+  ; Initialize people
+  ; Kenya
+  cro 50 [
+    set size 10
+    set shape "person"
+    ; * 5 / 6 because we want to offset left by 1/6th of the screen
+    ; set xcor (random (world-width / 3)) + (world-width * 1 / 6)
+    set xcor (random ((world-width - 40) / 3)) + (world-width * 1 / 6) + 7
+    set ycor random world-height
+  ]
+
+  ; Japan
+  cro 120 [
+    set size 10
+    set shape "person"
+    ; * 5 / 6 because we want to offset left by 1/6th of the screen
+    set xcor (random ((world-width - 40) / 3)) + (world-width * 3 / 6) + 7
+    set ycor random world-height
+  ]
+
+  ; USA
+  cro 350 [
+    set size 10
+    set shape "person"
+    ; * 5 / 6 because we want to offset left by 1/6th of the screen
+     set xcor (random ((world-width - 40) / 3)) + (world-width * 5 / 6) + 7
+    set ycor random world-height
   ]
 
 
@@ -90,6 +120,36 @@ NIL
 T
 NIL
 NIL
+1
+
+TEXTBOX
+226
+433
+326
+451
+Japan
+12
+0.0
+1
+
+TEXTBOX
+388
+434
+488
+452
+USA\n
+12
+0.0
+1
+
+TEXTBOX
+531
+434
+631
+452
+Kenya
+12
+0.0
 1
 
 @#$#@#$#@
