@@ -29,7 +29,7 @@ to setup
     ; * 5 / 6 because we want to offset left by 1/6th of the screen
     ; set xcor (random (world-width / 3)) + (world-width * 1 / 6)
     set xcor (random ((world-width - 40) / 3)) + (world-width * 1 / 6) + 7
-    set ycor random world-height
+    set ycor generateycor -1
     set country "kenya"
   ]
 
@@ -39,7 +39,7 @@ to setup
     set shape "person"
     ; * 5 / 6 because we want to offset left by 1/6th of the screen
     set xcor (random ((world-width - 40) / 3)) + (world-width * 3 / 6) + 7
-    set ycor random world-height
+    set ycor generateycor -1
     set country "japan"
   ]
 
@@ -49,7 +49,7 @@ to setup
     set shape "person"
     ; * 5 / 6 because we want to offset left by 1/6th of the screen
     set xcor (random ((world-width - 40) / 3)) + (world-width * 5 / 6) + 7
-    set ycor random world-height
+    set ycor generateycor -1
     set country "usa"
   ]
 
@@ -57,9 +57,23 @@ to setup
 end
 
 to emit-ghg
-
+  cro round (countPopulation "usa" / 20) [
+    setup_ghg
+  ]
+  cro round (countPopulation "japan" / 20) [
+    setup_ghg
+  ]
+  cro round (countPopulation "kenya" / 20) [
+    setup_ghg
+  ]
 end
 
+to setup_ghg
+  set size 1
+  set color black
+  set shape "circle 2"
+  setxy random-xcor ((generateycor 1) )
+end
 
 to transition
   emit-ghg
@@ -69,6 +83,10 @@ end
 
 to-report countPopulation [input_country]
   report count turtles with [country = input_country]
+end
+
+to-report generateycor [whichhalf]
+  report (((random (world-height - 8)) / 2) + 4 )     * whichhalf
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
@@ -86,7 +104,7 @@ GRAPHICS-WINDOW
 1
 0
 1
-1
+0
 1
 -100
 100
@@ -166,7 +184,7 @@ MONITOR
 657
 38
 777
-84
+83
 Japan population
 countPopulation \"japan\"
 17
@@ -177,7 +195,7 @@ MONITOR
 656
 90
 766
-136
+135
 USA population
 countPopulation \"usa\"
 17
@@ -188,7 +206,7 @@ MONITOR
 657
 139
 781
-185
+184
 Kenya population
 countPopulation \"kenya\"
 17
