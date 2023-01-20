@@ -1,4 +1,40 @@
-turtles-own [country]
+breed [ghgs ghg]
+breed [persons person]
+turtles-own [country birthrate deathrate spawned_tick]
+
+to setupkenya
+  set size 10
+  set shape "person"
+  ; * 5 / 6 because we want to offset left by 1/6th of the screen
+  ; set xcor (random (world-width / 3)) + (world-width * 1 / 6)
+  set xcor (random ((world-width - 40) / 3)) + (world-width * 1 / 6) + 7
+  set ycor generateycor -1
+  set country "kenya"
+  set birthrate 9
+  set deathrate 2
+end
+
+to setupusa
+  set size 10
+  set shape "person"
+  ; * 5 / 6 because we want to offset left by 1/6th of the screen
+  set xcor (random ((world-width - 40) / 3)) + (world-width * 5 / 6) + 7
+  set ycor generateycor -1
+  set country "usa"
+  set birthrate 1.5
+  set deathrate 1.45
+end
+
+to setupjapan
+  set size 10
+  set shape "person"
+  ; * 5 / 6 because we want to offset left by 1/6th of the screen
+  set xcor (random ((world-width - 40) / 3)) + (world-width * 3 / 6) + 7
+  set ycor generateycor -1
+  set country "japan"
+  set birthrate 0.6
+  set deathrate 0.6
+end
 
 to setup
   ca
@@ -23,47 +59,31 @@ to setup
   ]
   ; Initialize people
   ; Kenya
-  cro 50 [
-    set size 10
-    set shape "person"
-    ; * 5 / 6 because we want to offset left by 1/6th of the screen
-    ; set xcor (random (world-width / 3)) + (world-width * 1 / 6)
-    set xcor (random ((world-width - 40) / 3)) + (world-width * 1 / 6) + 7
-    set ycor generateycor -1
-    set country "kenya"
+  create-persons 5 [
+    setupkenya
   ]
 
   ; Japan
-  cro 120 [
-    set size 10
-    set shape "person"
-    ; * 5 / 6 because we want to offset left by 1/6th of the screen
-    set xcor (random ((world-width - 40) / 3)) + (world-width * 3 / 6) + 7
-    set ycor generateycor -1
-    set country "japan"
+  create-persons 12 [
+    setupjapan
   ]
 
   ; USA
-  cro 350 [
-    set size 10
-    set shape "person"
-    ; * 5 / 6 because we want to offset left by 1/6th of the screen
-    set xcor (random ((world-width - 40) / 3)) + (world-width * 5 / 6) + 7
-    set ycor generateycor -1
-    set country "usa"
+  create-persons 35 [
+    setupusa
   ]
 
 
 end
 
 to emit-ghg
-  cro round (countPopulation "usa" / 20) [
+  create-ghgs round (countPopulation "usa" / 20) [
     setup_ghg
   ]
-  cro round (countPopulation "japan" / 20) [
+  create-ghgs (countPopulation "japan" / 20) [
     setup_ghg
   ]
-  cro round (countPopulation "kenya" / 20) [
+  create-ghgs (countPopulation "kenya" / 20) [
     setup_ghg
   ]
 end
@@ -72,17 +92,53 @@ to setup_ghg
   set size 1
   set color black
   set shape "circle 2"
+  set spawned_tick ticks
   setxy random-xcor ((generateycor 1) )
 end
 
 to transition
-  emit-ghg
+  if allowGhg [
+    emit-ghg
+  ]
+
+  ask persons [
+    if random 100 < birthrate [
+      if country = "kenya" [
+        hatch 1 [
+          setupkenya
+        ]
+      ]
+      if country = "usa" [
+        hatch 1 [
+          setupusa
+        ]
+      ]
+      if country = "japan" [
+        hatch 1 [
+          setupjapan
+        ]
+      ]
+    ]
+    if random 100 < deathrate [
+      die
+    ]
+  ]
+
+  ask ghgs [
+    if ticks - spawned_tick > 35 [
+      die
+    ]
+  ]
   tick
 end
 
 
 to-report countPopulation [input_country]
-  report count turtles with [country = input_country]
+  report count persons with [country = input_country]
+end
+
+to-report countghgs
+  report count ghgs
 end
 
 to-report generateycor [whichhalf]
@@ -212,6 +268,46 @@ countPopulation \"kenya\"
 17
 1
 11
+
+SWITCH
+647
+208
+767
+241
+allowGhg
+allowGhg
+0
+1
+-1000
+
+MONITOR
+799
+44
+857
+89
+GHGs
+countghgs
+17
+1
+11
+
+PLOT
+832
+152
+1032
+302
+GHGs
+time
+ghgs
+0.0
+10.0
+0.0
+10.0
+true
+false
+"" ""
+PENS
+"default" 1.0 0 -16777216 true "" "plot countghgs"
 
 @#$#@#$#@
 ## WHAT IS IT?
