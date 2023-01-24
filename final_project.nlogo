@@ -2,6 +2,9 @@ breed [ghgs ghg]
 breed [persons person]
 turtles-own [country birthrate deathrate spawned_tick]
 
+; Turtle context
+; this procedure sets up a "person" turtle representing 10 million people of kenya
+; Author: Lenny
 to setupkenya
   set size 10
   set shape "person"
@@ -14,6 +17,9 @@ to setupkenya
   set deathrate 2
 end
 
+; Turtle context
+; this procedure sets up a "person" turtle representing 10 million people of usa
+; Author: Lenny
 to setupusa
   set size 10
   set shape "person"
@@ -25,6 +31,9 @@ to setupusa
   set deathrate 1.45
 end
 
+; Turtle context
+; this procedure sets up a "person" turtle representing 10 million people of japan
+; Author: Lenny
 to setupjapan
   set size 10
   set shape "person"
@@ -36,6 +45,9 @@ to setupjapan
   set deathrate 0.6
 end
 
+; Observer context
+; This procedure sets up the world, creates the different color background regions, and creates the initial population
+; Author: Sanjeena
 to setup
   ca
   reset-ticks
@@ -72,35 +84,43 @@ to setup
   create-persons 35 [
     setupusa
   ]
-
-
 end
 
+; Observer context
+; Create the GHG particles with regards to the population of the country and its sustainability
+; Author: Sanjeena
 to emit-ghg
   create-ghgs round (countPopulation "usa" / usa_sustainability) [
     setup_ghg
   ]
-  create-ghgs (countPopulation "japan" / japan_sustainability) [
+  create-ghgs round (countPopulation "japan" / japan_sustainability) [
     setup_ghg
   ]
-  create-ghgs (countPopulation "kenya" / kenya_sustainability) [
+  create-ghgs round (countPopulation "kenya" / kenya_sustainability) [
     setup_ghg
   ]
 end
 
+; turtle context
+; Set up a GHG particle at any random point above the x-axis
+; Author: Lenny
 to setup_ghg
   set size 1
-  set color black
+  set color one-of [0 1 2]
   set shape "circle 2"
   set spawned_tick ticks
   setxy random-xcor ((generateycor 1) )
 end
 
+; Observer context
+; Iterate our model forwards by one unit of time (representative of a year)
+; Author: Lenny + Sanjeena
 to transition
   if allowGhg [
     emit-ghg
   ]
 
+  ; handle birth and death rates
   ask persons [
     if random 100 < birthrate [
       if country = "kenya" and countPopulation "kenya" < 200 [
@@ -124,6 +144,7 @@ to transition
     ]
   ]
 
+  ; fade GHGs after 35 years/ticks
   ask ghgs [
     if ticks - spawned_tick > 35 [
       die
@@ -133,14 +154,21 @@ to transition
 end
 
 
+; Count the population of a country
+; valid input_country inputs are: "usa", "kenya", "japan"
+; Author : Lenny
 to-report countPopulation [input_country]
   report count persons with [country = input_country]
 end
 
+; Count the number of present greenhouse gas particles
+; Author: Lenny
 to-report countghgs
   report count ghgs
 end
 
+; generate y coordinate for a turtle in either the top or bottom half of the world
+; Author: Lenny
 to-report generateycor [whichhalf]
   report (((random (world-height - 8)) / 2) + 4 )     * whichhalf
 end
@@ -348,54 +376,71 @@ kenya_sustainability
 kenya_sustainability
 0
 100
-100.0
+89.0
 1
 1
 NIL
 HORIZONTAL
 
 @#$#@#$#@
-# Climate Change Stimulation (with regards to population and politics)
+# Climate Change Stimulation (with regards to population and environmental choices)
+
+# By Lenny Metlitsky and Sanjeena Hossen PD4
 
 ## WHAT IS IT?
 
-This model represents the relationship between population growth and Co2 emissions.
+This model represents the relationship between population growth rates, the choices we make in regards to our environment and climate, and GHG emissions.
+
+There are three countries, each with different population growth trends.
+
+Kenya has a growing population, that will boom.
+The USA has a fairly stagnant population that will plateu.
+Japan has a shrinking population, that will eventually die out.
+
+Each country emits GHGs to the shared atmosphere every year/tick.
+
+Each country's sustainability can be adjusted with the corresponding slider, with 0 being terribly unsustainable and 100 being perfectly green.
 
 ## HOW IT WORKS
 
-(what rules the agents use to create the overall behavior of the model)
+Each country contains a specific amount of turtles relative to the actual population of the country. One turtle "person" represents 10 million people.
+
+On every transition to the next tick/generation/year, a directly proportional greenhouse gas amount will be emitted to the population and sustainability.
 
 ## HOW TO USE IT
-The setup button splits the world into three sections to represent the following countries: Kenya, United States, and Japan. Each country contains a specific amount of turtles relative to the actual population of the country. One turtle represents 1 million people.
+Upon pressing the setup button, the button will split the world into three sections/countries to represent the following countries: Kenya, United States, and Japan.
+
+Upon pressing the transition button, the model will have some GHG emissions and some population change. Press this button multiple times to see long term changes and trends.
+
 
 ## THINGS TO NOTICE
 
-- politics plays a role in determining how much Co2 is released due to
+- politics plays a role in determining GHG emissions (controlled via the sustainability slider of a certian country)
 
+- If the birth rates do not change (which in this model, they don't), Kenya will generally have the largest population.
 
-
-
+- The population is never the same from generation to generation and model run to model run. (there is aspects of randomness involved)
 
 
 ## THINGS TO TRY
 
-(suggested things for the user to try to do (move sliders, switches, etc.) with the model)
+Try having a fairly unsustainable (the default slider settings work) model and run for about 20 years/ticks/iterations. Then, scale the countries to be more sustainable and notice how GHG emissions are lower now. Yay! (The graph shows a downward slope/trend of GHG emissions as well!)
 
 ## EXTENDING THE MODEL
 
-(suggested things to add or change in the Code tab to make the model more complicated, detailed, accurate, etc.)
+To make the model more complex, different types of GHGs with different potencies can be added. Then, the TYPE of pollution and emissions can be specified.
 
 ## NETLOGO FEATURES
 
-(interesting or unusual features of NetLogo that the model uses, particularly in the Code tab; or where workarounds were needed for missing features)
+hatch is used as an alternative to create-person within the turtle context, as you cannot use cro/create-XXXX commands within the observer context.
 
 ## RELATED MODELS
 
-(models in the NetLogo Models Library and elsewhere which are of related interest)
+"Climate Change"
+(Related, but no code/model features are shared)
 
 ## CREDITS AND REFERENCES
-
-(a reference to the model's URL on the web if it has one, as well as any other necessary credits, citations, and links)
+By Lenny Metlitsky and Sanjeena Hossen 
 @#$#@#$#@
 default
 true
