@@ -10,7 +10,7 @@ to setupkenya
   set xcor (random ((world-width - 40) / 3)) + (world-width * 1 / 6) + 7
   set ycor generateycor -1
   set country "kenya"
-  set birthrate 9
+  set birthrate 2.5
   set deathrate 2
 end
 
@@ -77,13 +77,13 @@ to setup
 end
 
 to emit-ghg
-  create-ghgs round (countPopulation "usa" / 20) [
+  create-ghgs round (countPopulation "usa" / usa_sustainability) [
     setup_ghg
   ]
-  create-ghgs (countPopulation "japan" / 20) [
+  create-ghgs (countPopulation "japan" / japan_sustainability) [
     setup_ghg
   ]
-  create-ghgs (countPopulation "kenya" / 20) [
+  create-ghgs (countPopulation "kenya" / kenya_sustainability) [
     setup_ghg
   ]
 end
@@ -103,7 +103,7 @@ to transition
 
   ask persons [
     if random 100 < birthrate [
-      if country = "kenya" [
+      if country = "kenya" and countPopulation "kenya" < 200 [
         hatch 1 [
           setupkenya
         ]
@@ -309,22 +309,73 @@ false
 PENS
 "default" 1.0 0 -16777216 true "" "plot countghgs"
 
+SLIDER
+19
+140
+192
+173
+usa_sustainability
+usa_sustainability
+0
+100
+100.0
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+19
+194
+204
+227
+japan_sustainability
+japan_sustainability
+0
+100
+80.0
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+13
+250
+198
+283
+kenya_sustainability
+kenya_sustainability
+0
+100
+100.0
+1
+1
+NIL
+HORIZONTAL
+
 @#$#@#$#@
+# Climate Change Stimulation (with regards to population and politics)
+
 ## WHAT IS IT?
 
-(a general understanding of what the model is trying to show or explain)
+This model represents the relationship between population growth and Co2 emissions.
 
 ## HOW IT WORKS
 
 (what rules the agents use to create the overall behavior of the model)
 
 ## HOW TO USE IT
-
-(how to use the model, including a description of each of the items in the Interface tab)
+The setup button splits the world into three sections to represent the following countries: Kenya, United States, and Japan. Each country contains a specific amount of turtles relative to the actual population of the country. One turtle represents 1 million people.
 
 ## THINGS TO NOTICE
 
-(suggested things for the user to notice while running the model)
+- politics plays a role in determining how much Co2 is released due to
+
+
+
+
+
 
 ## THINGS TO TRY
 
