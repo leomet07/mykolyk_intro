@@ -1,0 +1,95 @@
+<!-- http://bart.stuy.edu/~lmetlitsky50/cw16.html  -->
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>CW 16</title>
+
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			body {
+				margin: 0px;
+				font-family: Impact, Haettenschweiler, "Arial Narrow Bold",
+					sans-serif;
+				font-size: 18px;
+				padding-left: 10px;
+				padding-right: 10px;
+			}
+
+			main {
+				width: 98vw;
+
+				margin: auto;
+			}
+
+			table {
+				margin-top: 10px;
+				border-collapse: collapse;
+				width: 100%;
+			}
+			table,
+			tr,
+			td,
+			th {
+				border: 2px solid black;
+				padding: 10px;
+			}
+
+			th {
+				background-color: red;
+			}
+
+			.row_1 {
+				background-color: green;
+			}
+
+			.row_4 {
+				background-color: rgb(60, 170, 207);
+			}
+
+			.row_2_col_1 {
+				background-color: deeppink;
+			}
+
+			.row_2_col_2 {
+				background-color: yellow;
+			}
+
+			.row_3_col_2 {
+				background-color: orange;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<h1>Lenny Metlitsky CW 16</h1>
+			<table>
+				<tr>
+					<th>Column 1 Header</th>
+					<th>Column 2 Header</th>
+					<th>Column 3 Header</th>
+				</tr>
+				<tr class="row_1">
+					<td colspan="3">Row 1 Col 1</td>
+				</tr>
+				<tr>
+					<td class="row_2_col_1" rowspan="2">Row 2 Col 1</td>
+					<td class="row_2_col_2" colspan="2">Row 2 Col 2</td>
+				</tr>
+				<tr>
+					<td class="row_3_col_2" colspan="2">Row 3 Col 2</td>
+				</tr>
+				<tr class="row_4">
+					<td colspan="3">Row 4 Col 1</td>
+				</tr>
+			</table>
+		</main>
+	</body>
+</html>

@@ -1,0 +1,22 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Tilt Warp", Arial, Helvetica, sans-serif;
+	background-color: #fff;
+	font-size: 16px;
+}
+
+a {
+	color: inherit;
+}
+
+main {
+	width: 95vw;
+	max-width: 1000px;
+	margin: auto;
+	padding-top: 10px;
+}
