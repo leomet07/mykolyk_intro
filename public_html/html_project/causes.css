@@ -2,7 +2,7 @@
 	text-align: center;
 }
 
-#header h2 {
+#header .emphasis {
 	font-size: 2.5rem;
 	text-align: center;
 	font-style: italic;
@@ -14,6 +14,10 @@ h1 {
 	text-align: center;
 }
 
+h2 {
+	margin-top: 10px;
+}
+
 img {
 	width: 100%;
 	border: 1px solid rgb(241, 241, 241);
@@ -22,27 +26,30 @@ img {
 
 #pie_chart {
 	max-width: 800px;
-	margin: 10px;
 }
 
 #concentration_graph {
 	max-width: 600px;
-	flex: 75%;
-	margin: 10px;
+	width: 60%;
 }
 
 #increasing_concentration_parent {
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 }
 
 #ipcc_quote {
-	flex: 25%;
+	width: 35%;
 }
+
 @media screen and (max-width: 850px) {
 	#increasing_concentration_parent {
 		display: flex;
-		flex-direction: column-reverse;
+		flex-direction: column;
+	}
+	#ipcc_quote {
+		width: 100%;
 	}
 }
 

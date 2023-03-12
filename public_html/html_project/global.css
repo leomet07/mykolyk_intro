@@ -64,12 +64,18 @@ nav .inner a {
 	footer .inner {
 		display: block;
 	}
+
 	#footer_right,
 	#footer_left {
 		text-align: center;
 	}
 	nav .inner {
 		display: block;
+	}
+
+	nav .inner a {
+		margin-left: 0;
+		margin-right: 20px;
 	}
 
 	#home_page_link {
