@@ -1,7 +1,53 @@
-main {
+#header {
 	text-align: center;
 }
 
+#header h2 {
+	font-size: 2.5rem;
+	text-align: center;
+	font-style: italic;
+	text-decoration: underline;
+}
+
 h1 {
-	font-size: 4rem;
+	font-size: 3rem;
+	text-align: center;
+}
+
+img {
+	width: 100%;
+	border: 1px solid rgb(241, 241, 241);
+	border-radius: 5px;
+}
+
+#pie_chart {
+	max-width: 800px;
+	margin: 10px;
+}
+
+#concentration_graph {
+	max-width: 600px;
+	flex: 75%;
+	margin: 10px;
+}
+
+#increasing_concentration_parent {
+	display: flex;
+	align-items: center;
+}
+
+#ipcc_quote {
+	flex: 25%;
+}
+@media screen and (max-width: 850px) {
+	#increasing_concentration_parent {
+		display: flex;
+		flex-direction: column-reverse;
+	}
+}
+
+@media screen and (max-width: 650px) {
+	h1 {
+		font-size: 2.5rem;
+	}
 }
