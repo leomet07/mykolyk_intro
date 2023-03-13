@@ -1,0 +1,90 @@
+#header {
+	text-align: center;
+}
+
+.main_point {
+	text-align: center;
+	font-style: italic;
+	/* text-decoration: underline; */
+	font-weight: bold;
+}
+
+.emphasis {
+	color: var(--emphasis-color);
+	text-decoration: underline;
+}
+
+.emphasis_neg {
+	color: rgb(182, 0, 0);
+	text-decoration: underline;
+}
+h1 {
+	font-size: 3rem;
+}
+
+h2 {
+	margin-top: 10px;
+}
+
+#video_container {
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+#video {
+	border: 1px solid grey;
+}
+
+#video_container_inner {
+	text-align: right;
+	font-size: 0.95rem;
+	margin: auto;
+	outline: red;
+	width: 560px;
+	height: 315px;
+}
+
+#four_boxes_parent {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+#four_boxes_parent div {
+	width: 50%;
+	flex: 45%;
+	aspect-ratio: 16 / 10;
+	overflow: hidden;
+	position: relative;
+	margin: 3px;
+	border-radius: 5px;
+}
+
+#four_boxes_parent img {
+	position: relative;
+	z-index: 2;
+}
+
+#four_boxes_parent .part:hover {
+	background-color: black;
+}
+
+#four_boxes_parent .part:hover > img {
+	transition: ease 0.2s;
+	opacity: 30%;
+}
+
+#four_boxes_parent .label {
+	color: white;
+	position: absolute;
+	z-index: 0;
+	top: 41%;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	width: 190px;
+	text-align: center;
+}
+#four_boxes_parent .label h1 {
+	font-size: 2.5rem;
+}
