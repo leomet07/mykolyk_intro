@@ -25,7 +25,7 @@ h1 {
 	border-radius: 5px;
 }
 
-#four_boxes_parent img {
+#four_boxes_parent a {
 	position: relative;
 	z-index: 2;
 }
@@ -34,7 +34,7 @@ h1 {
 	background-color: black;
 }
 
-#four_boxes_parent .part:hover > img {
+#four_boxes_parent .part:hover > a {
 	transition: ease 0.2s;
 	opacity: 30%;
 }

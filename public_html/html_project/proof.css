@@ -45,6 +45,7 @@ h2 {
 }
 
 #four_boxes_parent {
+	margin-top: 20px;
 	display: flex;
 	flex-wrap: wrap;
 }
@@ -52,25 +53,34 @@ h2 {
 #four_boxes_parent div {
 	width: 50%;
 	flex: 45%;
-	aspect-ratio: 16 / 10;
+	aspect-ratio: 16 / 9;
 	overflow: hidden;
 	position: relative;
 	margin: 3px;
 	border-radius: 5px;
 }
 
-#four_boxes_parent img {
+#four_boxes_parent a {
+	width: 100%;
 	position: relative;
 	z-index: 2;
 }
 
-#four_boxes_parent .part:hover {
+#four_boxes_parent img {
+	width: 100%;
+}
+
+#four_boxes_parent .part {
 	background-color: black;
 }
 
-#four_boxes_parent .part:hover > img {
+#four_boxes_parent a {
+	opacity: 50%;
+}
+
+#four_boxes_parent .part:hover > a {
 	transition: ease 0.2s;
-	opacity: 30%;
+	opacity: 20%;
 }
 
 #four_boxes_parent .label {
@@ -85,6 +95,21 @@ h2 {
 	width: 190px;
 	text-align: center;
 }
+
 #four_boxes_parent .label h1 {
 	font-size: 2.5rem;
+}
+
+@media screen and (max-width: 750px) {
+	#four_boxes_parent {
+		display: block;
+	}
+
+	#four_boxes_parent div {
+		width: 100%;
+	}
+
+	li {
+		font-size: 1.5rem;
+	}
 }
