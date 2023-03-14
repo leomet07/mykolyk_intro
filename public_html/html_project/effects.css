@@ -70,6 +70,7 @@ table {
 	background-color: rgb(215, 250, 238);
 	padding: 10px;
 	border-radius: 10px;
+	cursor: pointer;
 }
 
 #effects_image {
@@ -93,6 +94,10 @@ table {
 		flex-direction: column;
 	}
 	#quote {
+		width: 100%;
+	}
+
+	#effects_image {
 		width: 100%;
 	}
 }
