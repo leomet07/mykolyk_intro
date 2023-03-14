@@ -1,0 +1,72 @@
+#header {
+	text-align: center;
+}
+
+#header .emphasis {
+	font-size: 2.5rem;
+	text-align: center;
+	font-style: italic;
+	text-decoration: underline;
+}
+
+h1 {
+	font-size: 3rem;
+	text-align: center;
+}
+
+h2 {
+	margin-top: 10px;
+}
+
+img {
+	width: 100%;
+	border: 1px solid rgb(241, 241, 241);
+	border-radius: 5px;
+}
+
+table,
+td,
+tr,
+th {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+td,
+th {
+	padding: 10px;
+}
+
+table {
+	width: 100%;
+}
+.emphasis {
+	color: var(--emphasis-color);
+	text-decoration: underline;
+}
+
+.emphasis_neg {
+	color: rgb(182, 0, 0);
+	text-decoration: underline;
+}
+
+#form {
+	margin-top: 20px;
+
+	font-size: 1.1rem;
+
+	text-align: center;
+}
+
+#form input {
+	font-size: 1.2rem;
+	margin: 5px;
+}
+
+#submit {
+	font-size: 1rem;
+	border: 1px solid black;
+	background-color: rgb(249, 255, 253);
+	padding: 10px;
+	border-radius: 10px;
+}
