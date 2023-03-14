@@ -76,3 +76,22 @@ th {
 table {
 	width: 100%;
 }
+
+#stats {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#emitters_image {
+	margin-right: 10px;
+}
+
+@media screen and (max-width: 650px) {
+	#stats {
+		display: block;
+	}
+	#emitters_image {
+		margin-right: 0px;
+	}
+}
