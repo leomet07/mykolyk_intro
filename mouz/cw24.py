@@ -6,8 +6,21 @@ print("CW24 By Lenny Metlitsky PD9 3/23/2023")
 def swap(s : str):
     return s[-1] + s[1:len(s) - 1] + s[0] 
 
-print("Swapping 'plane': " , swap("plane"))
-print("Swapping 'bird': " , swap("bird"))
+def swap_with_loop(s : str):
+    store = ""
+    i = 0 
+    while i < len(s):
+        if i == 0:
+            store += s[-1]
+        elif i == len(s) - 1:
+            store += s[0]
+        else:
+            store += s[i]
+        i += 1
+    return store
+
+print("Swapping 'plane': " , swap_with_loop("plane"))
+print("Swapping 'bird': " , swap_with_loop("bird"))
 
 
 # Write a Python function to get a string made of 4 copies of the last two 
@@ -20,5 +33,18 @@ def insert_end(s : str):
 
     return s[len(s) - 2 : ] * 4
 
-print("4 copies of last 4 chars of 'python': ", insert_end("Python"))
-print("4 copies of last 4 chars of 'Exercises': ", insert_end("Exercises"))
+def insert_end_with_loop(s : str):
+    if len(s) < 2:
+        return "ERROR: string not long enough"
+        
+    last = ""
+    i = len(s) - 2
+
+    while i < len(s):
+        last += s[i]
+        i += 1
+
+    return last * 4
+
+print("4 copies of last 4 chars of 'python': ", insert_end_with_loop("Python"))
+print("4 copies of last 4 chars of 'Exercises': ", insert_end_with_loop("Exercises"))
