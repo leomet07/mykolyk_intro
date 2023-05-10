@@ -1,4 +1,5 @@
-# 
+print("CW35 by Lenny Metlitsky PD9 5/10/2023")
+
 # Write a Python procedure to check a dictionary is empty or not
 
 def is_empty(d : dict):
