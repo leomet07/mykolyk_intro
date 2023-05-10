@@ -21,6 +21,7 @@ def snow_flake(level : int, size : int):
         t.right(120)
 
 
+t.pensize(2)
 
 for i in range(3, -1, -1):
     size = 70 * ((i ** 1.5) + 1)
