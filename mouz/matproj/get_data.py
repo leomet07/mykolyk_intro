@@ -48,3 +48,39 @@ for line in data:
     country_data[key]=value
 
 pprint(country_data)
+
+# By Sangam
+
+from matplotlib import pyplot as plt
+from matplotlib.backend_bases import MouseButton
+
+nums = []
+labels = []
+
+for key in country_data:
+    if "with" in key:
+        continue
+    deaths = float(country_data[key]["death_2019"].replace(",", ""))
+    labels.append(key)
+    nums.append(deaths)
+
+plt.pie(nums, labels=labels)
+
+# Lenny
+
+def on_move(event):
+    if event.inaxes:
+        print(f'data coords {event.xdata} {event.ydata},',
+              f'pixel coords {event.x} {event.y}')
+
+
+def on_click(event):
+    if event.button is MouseButton.LEFT:
+        print('disconnecting callback')
+        plt.disconnect(binding_id)
+
+
+binding_id = plt.connect('motion_notify_event', on_move)
+plt.connect('button_press_event', on_click)
+
+plt.show()
