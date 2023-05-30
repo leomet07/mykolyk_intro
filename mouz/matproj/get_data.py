@@ -64,20 +64,56 @@ for key in country_data:
     labels.append(key)
     nums.append(deaths)
 
-plt.pie(nums, labels=labels)
+fig, ax = plt.subplots()
 
+# Step 2. Create Annotation Object
+annotation = ax.annotate(
+    text='',
+    xy=(0, 0),
+    xytext=(15, 15), # distance from x, y
+    textcoords='offset points',
+    bbox={'boxstyle': 'round', 'fc': 'w'},
+    arrowprops={'arrowstyle': '->'}
+)
+annotation.set_visible(False)
+
+pie = plt.pie(nums, labels=labels, startangle=90)
+plt.gcf().set_size_inches(20,20) #see the magic xoxo, Suhana
+# plt.legend(labels, loc="center left")
 # Lenny
+
+
 
 def on_move(event):
     if event.inaxes:
-        print(f'data coords {event.xdata} {event.ydata},',
-              f'pixel coords {event.x} {event.y}')
+        # print(f'data coords {event.xdata} {event.ydata},',
+        #       f'pixel coords {event.x} {event.y}')
+        pass
 
 
 def on_click(event):
+    print(dir(event))
+    # print(dir(event.canvas))
     if event.button is MouseButton.LEFT:
-        print('disconnecting callback')
-        plt.disconnect(binding_id)
+        annotation_visbility = annotation.get_visible()
+        if event.inaxes == ax:
+            print(pie)
+            print("Starting to print slices")
+            for slice in pie[0]:
+                print(slice)
+                print("\n\n\n\n\n\n")
+                # Now get the angle of where it was clicked
+                # Figure out where clicked
+                
+            print("Ending the print slices")
+            # is_contained, annotation_index = pie.contains(event)
+            # print(is_contained, annotation_index)
+        # print('%s click: button=%d, x=%d, y=%d, xdata=%f, ydata=%f' %
+        #   ('double' if event.dblclick else 'single', event.button,
+        #    event.x, event.y, event.xdata, event.ydata))
+        # print('disconnecting callback')
+        # plt.disconnect(binding_id)
+
 
 
 binding_id = plt.connect('motion_notify_event', on_move)
