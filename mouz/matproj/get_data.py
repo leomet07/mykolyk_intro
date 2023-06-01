@@ -60,54 +60,61 @@ from matplotlib.widgets import Button
 def conv_to_float(s: str):
 	return float(s.replace(",", ""))
 
-def deaths_100k_only(event):
-	plt.close()
-
-	labels = ["United States", "Overall mean (without United States)"]
-	data = [conv_to_float(country_data[label]["deaths_100k_2019"]) for label in labels]
-	print(labels, data)
-	barlist = plt.bar(labels, data)
-	barlist[0].set_color("#710004")
-	barlist[1].set_color("#050056")
-	plt.title("Deaths per 100k people in 2019")
-	plt.ylabel("Deaths per 100k people")
-	plt.show()
 
 
-def pie_chart_of_total_deaths():
-	nums = []
-	labels = []
 
-	for key in country_data:
-		if "with" in key:
-			continue
-		deaths = float(country_data[key]["death_2019"].replace(",", ""))
-		labels.append(key)
-		nums.append(deaths)
 
-	fig, ax = plt.subplots()
-
-	plt.pie(nums, labels=labels)
-	axnext = fig.add_axes([0.81, 0.05, 0.15, 0.075])
-	bnext = Button(axnext, 'Deaths out of 100k')
-	bnext.on_clicked(deaths_100k_only)
-	plt.show()
 
 
 # plt.gcf().set_size_inches(20,20) #see the magic xoxo, Suhana
 # plt.legend(labels, loc="center left")
 # Lenny
 
-pie_chart_of_total_deaths()
+def joke_handle(event):
+	print("Joke handle")
 
+class Graphing():
+	def __init__(self):
+		deaths = []
+		labels = []
 
+		for key in country_data:
+			if "with" in key:
+				continue
+			calc_deaths = float(country_data[key]["death_2019"].replace(",", ""))
+			labels.append(key)
+			deaths.append(calc_deaths)
+		self.deaths = deaths
+		self.labels = labels
 
+	def pie_chart_of_total_deaths(self, event):
+		plt.close()
 
-# binding_id = plt.connect('motion_notify_event', on_move)
-# plt.connect('button_press_event', on_click)
+		plt.pie(self.deaths, labels=self.labels)
+		axnext = plt.axes([0.81, 0.05, 0.15, 0.075])
+		bnext = Button(axnext, 'Deaths out of 100k')
+		bnext.on_clicked(self.deaths_100k_only)
+		axnext._button = bnext # Keep a reference to the button in memory so it is not deleted by garbage collector
+		plt.show()
+	
+	def deaths_100k_only(self, event):
+		plt.close()
 
+		labels = ["United States", "Overall mean (without United States)"]
+		data = [conv_to_float(country_data[label]["deaths_100k_2019"]) for label in labels]
 
+		barlist = plt.bar(labels, data)
+		barlist[0].set_color("#710004")
+		barlist[1].set_color("#050056")
+		plt.title("Deaths per 100k people in 2019")
+		plt.ylabel("Deaths per 100k people")
 
-# bprev = Button(axprev, 'Previous')
-# bprev.on_clicked(callback.prev)
+		new_axes = plt.axes([0.81, 0.1, 0.15, 0.075])
+		pie_button = Button(new_axes, 'Deaths')
+		pie_button.on_clicked(self.pie_chart_of_total_deaths)
+		new_axes._button = pie_button # Keep a reference to the button in memory so it is not deleted by garbage collector
 
+		plt.show()
+
+Graph = Graphing()
+Graph.pie_chart_of_total_deaths("") # Pass in nothing as the event, doesn't matter
