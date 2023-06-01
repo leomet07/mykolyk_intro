@@ -32,20 +32,28 @@ for row in rows:
 print(data)
 
 # Done by Ushoshi
+
+def conv_to_float(s: str):
+	if s == "NA":
+		return "NA"
+	return float(s.replace(",", "").replace("−", "-"))
+
 country_data = {}
 for line in data:
 	if len(line) < 2:
 		continue
 	key = line[0]
+	if key == "Chile††":
+		continue # Chile has broken data
 	value = {
-		"death_2015" : line[1],
-		"death_2019" : line[2],
-		"percent_change" : line[3],
-		"population_2015" : line[4],
-		"population_2019" : line[5],
-		"deaths_100k_2015" : line[6],
-		"deaths_100k_2019" : line[7],
-		"deaths_change" : line[8],
+		"death_2015" : conv_to_float(line[1]),
+		"death_2019" : conv_to_float(line[2]),
+		"percent_change" : conv_to_float(line[3]),
+		"population_2015" : conv_to_float(line[4]),
+		"population_2019" : conv_to_float(line[5]),
+		"deaths_100k_2015" : conv_to_float(line[6]),
+		"deaths_100k_2019" : conv_to_float(line[7]),
+		"deaths_change" : conv_to_float(line[8]),
 	}
 	country_data[key]=value
 
@@ -54,24 +62,9 @@ pprint(country_data)
 # By Sangam
 
 from matplotlib import pyplot as plt
-from matplotlib.backend_bases import MouseButton
 from matplotlib.widgets import Button
 
-def conv_to_float(s: str):
-	return float(s.replace(",", ""))
 
-
-
-
-
-
-
-# plt.gcf().set_size_inches(20,20) #see the magic xoxo, Suhana
-# plt.legend(labels, loc="center left")
-# Lenny
-
-def joke_handle(event):
-	print("Joke handle")
 
 class Graphing():
 	def __init__(self):
@@ -81,7 +74,7 @@ class Graphing():
 		for key in country_data:
 			if "with" in key:
 				continue
-			calc_deaths = float(country_data[key]["death_2019"].replace(",", ""))
+			calc_deaths = country_data[key]["death_2019"]
 			labels.append(key)
 			deaths.append(calc_deaths)
 		self.deaths = deaths
@@ -101,7 +94,7 @@ class Graphing():
 		plt.close()
 
 		labels = ["United States", "Overall mean (without United States)"]
-		data = [conv_to_float(country_data[label]["deaths_100k_2019"]) for label in labels]
+		data = [country_data[label]["deaths_100k_2019"] for label in labels]
 
 		barlist = plt.bar(labels, data)
 		barlist[0].set_color("#710004")
