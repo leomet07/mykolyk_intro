@@ -82,16 +82,40 @@ class Graphing():
 
 	def pie_chart_of_total_deaths(self, event):
 		plt.close()
+		fig, ax = plt.subplots(figsize=(16, 12), subplot_kw=dict(aspect="equal"))
 
-		plt.pie(self.deaths, labels=self.labels)
+		title = "Deaths in the richest nations"
+		plt.title(title)
+		fig.canvas.manager.set_window_title(title)
+
+		wedges, texts = ax.pie(self.deaths)
 		axnext = plt.axes([0.81, 0.05, 0.15, 0.075])
 		bnext = Button(axnext, 'Deaths out of 100k')
 		bnext.on_clicked(self.deaths_100k_only)
 		axnext._button = bnext # Keep a reference to the button in memory so it is not deleted by garbage collector
+
+		bbox_props = dict(boxstyle="square,pad=0.3", fc="w", ec="k", lw=0.72)
+		kw = dict(arrowprops=dict(arrowstyle="-"),
+				bbox=bbox_props, zorder=0, va="center")
+
+		for i, p in enumerate(wedges):
+			ang = (p.theta2 - p.theta1)/2. + p.theta1
+			y = np.sin(np.deg2rad(ang))
+			x = np.cos(np.deg2rad(ang))
+			horizontalalignment = {-1: "right", 1: "left"}[int(np.sign(x))]
+			connectionstyle = f"angle,angleA=0,angleB={ang}"
+			kw["arrowprops"].update({"connectionstyle": connectionstyle})
+			ax.annotate(self.labels[i], xy=(x, y), xytext=(1.35*np.sign(x), 1.4*y),
+						horizontalalignment=horizontalalignment, **kw)
+		
+		
+
+		plt.subplots_adjust(left=0.1, right=0.9, top=0.9, bottom=0.1)
 		plt.show()
 	
 	def deaths_100k_only(self, event):
 		plt.close()
+		fig, ax = plt.subplots(figsize=(16, 12))
 
 		labels = ["United States", "Overall mean (without United States)"]
 		data = [country_data[label]["deaths_100k_2019"] for label in labels]
@@ -99,7 +123,11 @@ class Graphing():
 		barlist = plt.bar(labels, data)
 		barlist[0].set_color("#710004")
 		barlist[1].set_color("#050056")
-		plt.title("Deaths per 100k people in 2019")
+
+		title = "Deaths per 100k people in 2019"
+		plt.title(title)
+		fig.canvas.manager.set_window_title(title)
+
 		plt.ylabel("Deaths per 100k people")
 
 		new_axes = plt.axes([0.81, 0.1, 0.15, 0.075])
@@ -107,6 +135,7 @@ class Graphing():
 		pie_button.on_clicked(self.pie_chart_of_total_deaths)
 		new_axes._button = pie_button # Keep a reference to the button in memory so it is not deleted by garbage collector
 
+		plt.subplots_adjust(left=0.3, right=0.7, top=0.9, bottom=0.1)
 		plt.show()
 
 Graph = Graphing()
