@@ -85,7 +85,7 @@ class Graphing():
 		fig, ax = plt.subplots(figsize=(16, 12), subplot_kw=dict(aspect="equal"))
 
 		title = "Deaths in the richest nations"
-		plt.title(title)
+		plt.title(title, fontdict={"family" : "serif", "size" : 22, "weight" : "bold"})
 		fig.canvas.manager.set_window_title(title)
 
 		wedges, texts = ax.pie(self.deaths)
@@ -125,7 +125,7 @@ class Graphing():
 		barlist[1].set_color("#050056")
 
 		title = "Deaths per 100k people in 2019"
-		plt.title(title)
+		plt.title(title, fontdict={"family" : "serif", "size" : 22, "weight" : "bold"})
 		fig.canvas.manager.set_window_title(title)
 
 		plt.ylabel("Deaths per 100k people")
