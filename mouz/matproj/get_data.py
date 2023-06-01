@@ -1,6 +1,8 @@
 from bs4 import BeautifulSoup
 import requests
 from pprint import pprint
+import numpy as np
+from math import pi
 
 url = "https://www.cdc.gov/mmwr/volumes/71/wr/mm7126a1.htm"
 r = requests.get(url)
@@ -78,7 +80,7 @@ annotation = ax.annotate(
 annotation.set_visible(False)
 
 pie = plt.pie(nums, labels=labels, startangle=90)
-plt.gcf().set_size_inches(20,20) #see the magic xoxo, Suhana
+# plt.gcf().set_size_inches(20,20) #see the magic xoxo, Suhana
 # plt.legend(labels, loc="center left")
 # Lenny
 
@@ -93,15 +95,29 @@ def on_move(event):
 
 def on_click(event):
     print(dir(event))
+    y = float(event.ydata)
+    x = float(event.xdata)
+
+    slope = y / x
+    b = 0
+    print(f"y = {slope}x + {0}")
+
+    xforcos = ((1 - ((slope * x + b ) ** 2))) ** 0.5 * -1
+    print("X for cos: ", xforcos)
+
+    theta1 = np.arcsin(y) * (180 / pi)
+    theta2 = np.arccos(xforcos) * (180 / pi)
+    print(theta1, theta2)
     # print(dir(event.canvas))
     if event.button is MouseButton.LEFT:
         annotation_visbility = annotation.get_visible()
         if event.inaxes == ax:
-            print(pie)
+            # print(pie)
             print("Starting to print slices")
             for slice in pie[0]:
-                print(slice)
-                print("\n\n\n\n\n\n")
+                pass
+                # print(slice)
+                # print("\n\n\n\n\n\n")
                 # Now get the angle of where it was clicked
                 # Figure out where clicked
                 
