@@ -1,8 +1,9 @@
+print("Made by Lenny M [PD9], Sangam B[PD9], Ushoshi D[PD9], Suhana K [PD8]")
+
 from bs4 import BeautifulSoup
 import requests
 from pprint import pprint
 import numpy as np
-from math import pi
 
 url = "https://www.cdc.gov/mmwr/volumes/71/wr/mm7126a1.htm"
 r = requests.get(url)
@@ -10,9 +11,8 @@ r = requests.get(url)
 html_doc = str(r.text)
 soup = BeautifulSoup(html_doc, 'html.parser')
 
-# table = soup.table
 table = soup.find_all('table')[0]
-# print(table)
+
 
 if "Motor vehicle crash deaths and deaths per 100,000 population" in str(table.caption):
 	# print("This is the correct table")
@@ -29,7 +29,7 @@ for row in rows:
 		continue
 	data.append(row_data)
 
-print(data)
+# print(data)
 
 # Done by Ushoshi
 
@@ -57,14 +57,14 @@ for line in data:
 	}
 	country_data[key]=value
 
-pprint(country_data)
+# pprint(country_data)
 
 # By Sangam
+# Buttons by Suhana
+# Other details with Lenny's help
 
 from matplotlib import pyplot as plt
 from matplotlib.widgets import Button
-
-
 
 class Graphing():
 	def __init__(self):
