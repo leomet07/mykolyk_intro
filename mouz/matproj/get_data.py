@@ -84,15 +84,20 @@ class Graphing():
 		plt.close()
 		fig, ax = plt.subplots(figsize=(16, 12), subplot_kw=dict(aspect="equal"))
 
-		title = "Deaths in the richest nations"
+		title = "Car Deaths in the richest nations"
 		plt.title(title, fontdict={"family" : "serif", "size" : 22, "weight" : "bold"})
 		fig.canvas.manager.set_window_title(title)
 
 		wedges, texts = ax.pie(self.deaths)
-		axnext = plt.axes([0.81, 0.05, 0.15, 0.075])
-		bnext = Button(axnext, 'Deaths out of 100k')
-		bnext.on_clicked(self.deaths_100k_only)
-		axnext._button = bnext # Keep a reference to the button in memory so it is not deleted by garbage collector
+		barnext = plt.axes([0.81, 0.05, 0.15, 0.075])
+		barbuttonnext = Button(barnext, 'Deaths out of 100k')
+		barbuttonnext.on_clicked(self.deaths_100k_only)
+		barnext._button = barbuttonnext # Keep a reference to the button in memory so it is not deleted by garbage collector
+
+		trendnextaxes = plt.axes([0.81, 0.2, 0.15, 0.075])
+		trendbutton = Button(trendnextaxes, 'Deaths Trends')
+		trendbutton.on_clicked(self.deaths_change)
+		trendnextaxes._button = trendbutton # Keep a reference to the button in memory so it is not deleted by garbage collector
 
 		bbox_props = dict(boxstyle="square,pad=0.3", fc="w", ec="k", lw=0.72)
 		kw = dict(arrowprops=dict(arrowstyle="-"),
@@ -124,19 +129,58 @@ class Graphing():
 		barlist[0].set_color("#710004")
 		barlist[1].set_color("#050056")
 
-		title = "Deaths per 100k people in 2019"
+		title = "Car Deaths per 100k people in 2019"
 		plt.title(title, fontdict={"family" : "serif", "size" : 22, "weight" : "bold"})
 		fig.canvas.manager.set_window_title(title)
 
 		plt.ylabel("Deaths per 100k people")
 
 		new_axes = plt.axes([0.81, 0.1, 0.15, 0.075])
-		pie_button = Button(new_axes, 'Deaths')
+		pie_button = Button(new_axes, 'Pie chart of deaths')
 		pie_button.on_clicked(self.pie_chart_of_total_deaths)
 		new_axes._button = pie_button # Keep a reference to the button in memory so it is not deleted by garbage collector
 
+		trendnextaxes = plt.axes([0.81, 0.2, 0.15, 0.075])
+		trendbutton = Button(trendnextaxes, 'Death trends')
+		trendbutton.on_clicked(self.deaths_change)
+		trendnextaxes._button = trendbutton # Keep a reference to the button in memory so it is not deleted by garbage collector
+
 		plt.subplots_adjust(left=0.3, right=0.7, top=0.9, bottom=0.1)
 		plt.show()
+
+	def deaths_change(self, event):
+		plt.close()
+		fig, ax = plt.subplots(figsize=(16, 12))
+
+	
+		d2015 = country_data["United States"]["deaths_100k_2015"]
+		d2019 = country_data["United States"]["deaths_100k_2019"]
+		d2015_nor =  country_data["Norway"]["deaths_100k_2015"]
+		d2019_nor =  country_data["Norway"]["deaths_100k_2019"]
+
+		title = "Car Deaths in the USA vs Norway"
+		plt.title(title +"\n See how there is barely a change?\nThese problems have plagued us for years.", fontdict={"family" : "serif", "size" : 22, "weight" : "bold"})
+		fig.canvas.manager.set_window_title(title)
+
+		plt.ylabel("Deaths for 100k people")
+
+		plt.bar(["US 2015", "Norway 2015", "US 2019", "Norway 2019"], [d2015, d2015_nor, d2019, d2019_nor])
+
+		#Buttons
+		new_axes = plt.axes([0.81, 0.2, 0.15, 0.075])
+		pie_button = Button(new_axes, 'Pie chart of deaths')
+		pie_button.on_clicked(self.pie_chart_of_total_deaths)
+		new_axes._button = pie_button # Keep a reference to the button in memory so it is not deleted by garbage collector
+
+		barnext = plt.axes([0.81, 0.05, 0.15, 0.075])
+		barbuttonnext = Button(barnext, 'Deaths out of 100k')
+		barbuttonnext.on_clicked(self.deaths_100k_only)
+		barnext._button = barbuttonnext # Keep a reference to the button in memory so it is not deleted by garbage collector
+
+
+		plt.subplots_adjust(left=0.4, right=0.6, top=0.8, bottom=0.2)
+		plt.show()
+
 
 Graph = Graphing()
 Graph.pie_chart_of_total_deaths("") # Pass in nothing as the event, doesn't matter
